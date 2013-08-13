@@ -34,12 +34,12 @@ public class JogadorController extends AbstractController {
 				//Gerente não existe		
 				if (jogadorX == null){
 					
-					service.save(jogadorX);
+					service.save(jogador);
 					
-					return new ResponseEntity<String>(jogadorX.getId().toString(),
+					return new ResponseEntity<String>(jogador.getId().toString(),
 							HttpStatus.OK);
 				}
-				//Gerente Existe
+				//Jogador Existe
 				else{
 					
 					return new ResponseEntity<String>("-1",
@@ -78,7 +78,7 @@ public class JogadorController extends AbstractController {
 	}
 	
 	
-	// Retornando um lista de gerentes
+	// Retornando um lista de jogadores
 	@RequestMapping(value = "/getranking", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<Ranking>> get() {
@@ -88,15 +88,20 @@ public class JogadorController extends AbstractController {
 			
 			List<Jogador> jogadores = service.findAll();
 			
+			long pontosTotal = 0;
+			
+			Ranking rankingJogador;
+			
 			for (Jogador jogador: jogadores)
 			{
-				Ranking rankingJogador = new Ranking();
+				pontosTotal = 0;
+				
+				rankingJogador = new Ranking();
 				
 				rankingJogador.setUsername(jogador.getUsername());
+				
 				//Adicionando o raking do jogador no jogo
 				ranking.add(rankingJogador);
-				
-				long pontosTotal = 0;
 				
 				Iterator<Ponto> pontos = jogador.getPontos().iterator();
 				

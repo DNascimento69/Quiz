@@ -1,15 +1,12 @@
 package br.edu.ifes.sr.teste;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import br.edu.ifes.sr.poo2.model.Categoria;
 import br.edu.ifes.sr.poo2.model.Jogador;
-import br.edu.ifes.sr.poo2.service.CategoriaService;
 import br.edu.ifes.sr.poo2.service.JogadorService;
 
 public class TestJogador extends AbstractTest {

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import br.edu.ifes.sr.poo2.controller.model.PontoTemp;
 import br.edu.ifes.sr.poo2.model.Jogador;
 import br.edu.ifes.sr.poo2.model.Ponto;
 import br.edu.ifes.sr.poo2.model.Servico;
@@ -52,32 +53,43 @@ public class PontoController extends AbstractController {
 	
 	
 	
-	@RequestMapping(value = "/add/{username}/{service}", method = RequestMethod.POST)
+	@RequestMapping(value = "/add/", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<String> add(@PathVariable String username, @PathVariable long service, @RequestBody long valor) {
+	public ResponseEntity<String> add(@RequestBody PontoTemp pontoTemp) {
 		try {
 			//Verificando se existe
-			Ponto ponto = pontoservice.findByJogadorUsername(username);
-			if (ponto == null)
-			{
-				Jogador jogador = jogadorService.findByUsername(username);
-				Servico servico = servicoService.find(service);
+			Ponto ponto = pontoservice.findByJogadorUsernameAndServicoId(pontoTemp.getUserName(), pontoTemp.getIdServico());
+			if (ponto == null){
 				
-				Ponto novoPonto = new Ponto();
-				novoPonto.setJogador(jogador);
-				novoPonto.setServico(servico);
-				novoPonto.setValor(valor);
-				pontoservice.save(ponto);
+				Jogador jogador = jogadorService.findByUsername(pontoTemp.getUserName());
+				Servico servico = servicoService.find(pontoTemp.getIdServico());
 				
+				if (jogador!=null && servico !=null){
+					
+					Ponto novoPonto = new Ponto();
+					novoPonto.setJogador(jogador);
+					novoPonto.setServico(servico);
+					novoPonto.setValor(pontoTemp.getValor());
+					pontoservice.save(novoPonto);
+					
+					jogador.adicionarPonto(novoPonto);
+					
+					//Atualizando o jogador
+					jogadorService.save(jogador);
+					
+					return new ResponseEntity<String>("OK",HttpStatus.OK);	
+				}
+				else{
+					return new ResponseEntity<String>("NOK",HttpStatus.INTERNAL_SERVER_ERROR);
+				}
 			}
+			//O ponto já existe
 			else{
-				
-				ponto.setValor(valor);
+				ponto.setValor(pontoTemp.getValor());
 				pontoservice.save(ponto);
+				return new ResponseEntity<String>("OK",HttpStatus.OK);
 			}
-			
-			return new ResponseEntity<String>("OK",HttpStatus.OK);
-
+				
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<String>("NOK",HttpStatus.INTERNAL_SERVER_ERROR);
