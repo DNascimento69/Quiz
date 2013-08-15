@@ -10,4 +10,6 @@ import br.edu.ifes.sr.poo2.model.Categoria;
 @Transactional
 public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 
+	Categoria findByNome(String nome);
+	
 }

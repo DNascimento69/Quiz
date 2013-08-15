@@ -26,7 +26,12 @@ public class CategoriaController extends AbstractController {
 	public ResponseEntity<String> add(@RequestBody Categoria categoria) {
 		try {
 
-			service.save(categoria);
+			Categoria categoriaPesquisada = service.findByNome(categoria.getNome());
+			
+			if (categoriaPesquisada == null) service.save(categoria);
+			else 
+				return new ResponseEntity<String>("-1",
+						HttpStatus.OK);
 
 			return new ResponseEntity<String>(categoria.getId().toString(),
 					HttpStatus.OK);

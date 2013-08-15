@@ -35,6 +35,9 @@ public class CategoriaService implements CRUDGenerics<Categoria>
 		return repos.findAll();
 	}
 	
-	
+	public Categoria findByNome (String nome)
+	{
+		return repos.findByNome(nome);
+	}
 
 }
