@@ -6,10 +6,8 @@ public abstract class Usuario extends Model{
 	
 	private static final long serialVersionUID = 1L;
 
-
 	protected String email;
 	
-
 	protected String senha;
 
 	public String getEmail() {

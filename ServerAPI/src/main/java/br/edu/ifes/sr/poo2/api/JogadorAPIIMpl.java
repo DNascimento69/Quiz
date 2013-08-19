@@ -67,7 +67,7 @@ public class JogadorAPIIMpl extends APIGeneric implements JogadorAPI{
 		
 		String retorno = response.getEntity(String.class);
 		
-		if (retorno.trim().isEmpty()) throw new Exception("ValueExist");
+		if (retorno.trim().isEmpty()) throw new Exception("USERNOTEXIST");
 		
 		return retorno.trim();
 	}

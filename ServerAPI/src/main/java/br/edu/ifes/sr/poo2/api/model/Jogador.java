@@ -1,7 +1,5 @@
 package br.edu.ifes.sr.poo2.api.model;
 
-import java.util.HashSet;
-import java.util.Set;
 
 
 public class Jogador extends Usuario {
