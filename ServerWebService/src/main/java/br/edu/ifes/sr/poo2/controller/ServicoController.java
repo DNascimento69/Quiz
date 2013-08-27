@@ -34,21 +34,42 @@ public class ServicoController extends AbstractController {
 	
 	@RequestMapping(value = "/add/", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<String> add(@RequestBody ServicoTemp servicotemp) {
+	public ResponseEntity<String> add(@RequestBody ServicoTemp servicoTemp) {
 		try {
+			//verificando se os valores são nullos
+			if (servicoTemp == null ||
+				servicoTemp.getCategoria() == null || 
+				servicoTemp.getGerente() ==null ||
+				servicoTemp.getUrl() == null){
+					return new ResponseEntity<String>("ExistemAtributosNullos",
+						HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+				
+			//Verificando se o gerente existe
+			Gerente gerente = gerenteService.find(servicoTemp.getGerente().getId());
 
-			Gerente gerente = gerenteService.find(servicotemp.getIdGerente());
-
-			if (gerente == null || gerente.getServico() != null || servicotemp.getIdCategoria() == 0) {
-				return new ResponseEntity<String>("-1",
+			if (gerente == null) {
+				return new ResponseEntity<String>("GerenteNaoExiste",
+						HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			//Verificando se a categoria existe
+			Categoria categoria = categoriaService.findByNome(servicoTemp.getCategoria().getNome());
+			
+			if (categoria != null)
+			{
+				return new ResponseEntity<String>("CategoriaExiste",
 						HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			
+			//Criando o servico
 			Servico servico = new Servico();
-			Categoria categoria = categoriaService.find(servicotemp.getIdCategoria());
+			//Criando a categoria
+			categoria = servicoTemp.getCategoria();
+			
+			categoriaService.save(categoria);
 			
 			servico.setCategoria(categoria);
-			servico.setUrl(servicotemp.getUrl());
+			servico.setUrl(servicoTemp.getUrl());
 			
 			// Salvando o servico
 			service.save(servico);
@@ -71,7 +92,7 @@ public class ServicoController extends AbstractController {
 	// Retornando um lista de gerentes
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Servico>> get() {
+	public ResponseEntity<List<Servico>> get()  {
 		try {
 
 			List<Servico> servicos = service.findAll();

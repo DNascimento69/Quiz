@@ -1,12 +1,15 @@
 package br.edu.ifes.sr.poo2.controller.model;
 
-public class ServicoTemp {
+import br.edu.ifes.sr.poo2.model.Categoria;
+import br.edu.ifes.sr.poo2.model.Gerente;
+
+public class ServicoTemp  {
 
 	public String url;
 	
-	private long idGerente;
+	private Gerente gerente;
 
-	private long idCategoria;
+	private Categoria categoria;
 
 	public String getUrl() {
 		return url;
@@ -16,20 +19,21 @@ public class ServicoTemp {
 		this.url = url;
 	}
 
-	public long getIdGerente() {
-		return idGerente;
+	public Gerente getGerente() {
+		return gerente;
 	}
 
-	public void setIdGerente(long idGerente) {
-		this.idGerente = idGerente;
+	public void setGerente(Gerente gerente) {
+		this.gerente = gerente;
 	}
 
-	public long getIdCategoria() {
-		return idCategoria;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setIdCategoria(long idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
-	
+
+		
 }

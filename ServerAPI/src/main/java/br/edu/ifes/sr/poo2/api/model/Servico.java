@@ -2,7 +2,7 @@ package br.edu.ifes.sr.poo2.api.model;
 
 
 
-public class Servico extends Model{
+public class Servico extends Model {
 	
 	/**
 	 * 
@@ -12,9 +12,9 @@ public class Servico extends Model{
 
 	private String url;
 	
-	private long idGerente;
-
-	private long idCategoria;
+	private Categoria categoria;
+	
+	private Gerente gerente;
 
 	public String getUrl() {
 		return url;
@@ -24,22 +24,27 @@ public class Servico extends Model{
 		this.url = url;
 	}
 
-	public long getIdGerente() {
-		return idGerente;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setIdGerente(long idGerente) {
-		this.idGerente = idGerente;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
-	public long getIdCategoria() {
-		return idCategoria;
+	public Gerente getGerente() {
+		return gerente;
 	}
 
-	public void setIdCategoria(long idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setGerente(Gerente gerente) {
+		this.gerente = gerente;
 	}
 	
+	
+
+
+
+		
 		
 	
 }

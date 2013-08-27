@@ -1,34 +1,9 @@
 package br.edu.ifes.sr.poo2.teste;
 
-import java.util.UUID;
-
-import junit.framework.Assert;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import br.edu.ifes.sr.poo2.api.CategoriaAPI;
-import br.edu.ifes.sr.poo2.api.CategoriaAPIIMpl;
-import br.edu.ifes.sr.poo2.api.GerenteAPI;
-import br.edu.ifes.sr.poo2.api.GerenteAPIIMpl;
-import br.edu.ifes.sr.poo2.api.JogadorAPI;
-import br.edu.ifes.sr.poo2.api.JogadorAPIIMpl;
-import br.edu.ifes.sr.poo2.api.PontoAPI;
-import br.edu.ifes.sr.poo2.api.PontoAPIIMpl;
-import br.edu.ifes.sr.poo2.api.ServicoAPI;
-import br.edu.ifes.sr.poo2.api.ServicoAPIIMpl;
-import br.edu.ifes.sr.poo2.api.model.Categoria;
-import br.edu.ifes.sr.poo2.api.model.Gerente;
-import br.edu.ifes.sr.poo2.api.model.Jogador;
-import br.edu.ifes.sr.poo2.api.model.Ponto;
-import br.edu.ifes.sr.poo2.api.model.Ranking;
-import br.edu.ifes.sr.poo2.api.model.Servico;
 
 public class PontoTest {
 
-	private CategoriaAPI categoriaAPI;
-	
-	private GerenteAPI gerenteAPI;
+	/*private GerenteAPI gerenteAPI;
 	
 	private JogadorAPI jogadorAPI;
 	
@@ -108,5 +83,5 @@ public class PontoTest {
 		pontoAPI.setPonto(ponto);
 	}
 	
-	
+	*/
 }

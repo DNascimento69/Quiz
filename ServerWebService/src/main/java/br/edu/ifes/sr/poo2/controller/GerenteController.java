@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import br.edu.ifes.sr.poo2.model.Gerente;
 import br.edu.ifes.sr.poo2.service.GerenteService;
 
+
 @Controller
 @RequestMapping("/gerente")
 public class GerenteController extends AbstractController {

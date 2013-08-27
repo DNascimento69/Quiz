@@ -19,7 +19,7 @@ import br.edu.ifes.sr.poo2.service.PontoService;
 import br.edu.ifes.sr.poo2.service.ServicoService;
 
 @Controller
-@RequestMapping("/ponto")
+@RequestMapping("/ponto") 
 public class PontoController extends AbstractController {
 
 	@Autowired

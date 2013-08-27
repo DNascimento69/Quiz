@@ -18,6 +18,8 @@ import br.edu.ifes.sr.poo2.model.Jogador;
 import br.edu.ifes.sr.poo2.model.Ponto;
 import br.edu.ifes.sr.poo2.service.JogadorService;
 
+
+
 @Controller
 @RequestMapping("/jogador")
 public class JogadorController extends AbstractController {

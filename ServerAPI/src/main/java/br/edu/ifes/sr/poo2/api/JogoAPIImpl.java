@@ -9,11 +9,11 @@ import br.edu.ifes.sr.poo2.api.model.Nivel;
 import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.api.client.ClientResponse;
 
-public class JogoAPIImpl extends APIGeneric implements JogoAPI {
+public class JogoAPIImpl extends APIGeneric implements JogoAPI  {
 	
 	public Jogo jogar(String username, String URLServico, Nivel nivel) {
 
-		ClientResponse response = clientAPIUtil.get(URLServico+"/partida/"+username+"/"+nivel);
+		ClientResponse response = clientAPIUtil.get(URLServico+"/jogar/partida/"+username+"/"+nivel);
 		
 		String jsonResposta = response.getEntity(String.class);
 		
@@ -28,7 +28,7 @@ public class JogoAPIImpl extends APIGeneric implements JogoAPI {
 		
 		String JSON = gson.toJson(jogo);
 		
-		ClientResponse response = clientAPIUtil.post(URLServico+"/responder/", JSON);
+		ClientResponse response = clientAPIUtil.post(URLServico+"/jogar/responder/", JSON);
 		
 		String retorno = response.getEntity(String.class);
 		
