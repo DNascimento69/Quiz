@@ -43,15 +43,15 @@ public class CategoriaController extends AbstractController {
 		}
 	}
 
-	// Retornando um lista de gerentes
+	
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<Categoria>> get() {
 		try {
 
-			List<Categoria> servicos = service.findAll();
+			List<Categoria> categorias = service.findAll();
 
-			return new ResponseEntity<List<Categoria>>(servicos, HttpStatus.OK);
+			return new ResponseEntity<List<Categoria>>(categorias, HttpStatus.OK);
 
 		} catch (Exception e) {
 			return new ResponseEntity<List<Categoria>>(

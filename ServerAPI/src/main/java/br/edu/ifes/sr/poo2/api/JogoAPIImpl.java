@@ -4,15 +4,16 @@ import java.lang.reflect.Type;
 
 import br.edu.ifes.sr.poo2.api.generic.APIGeneric;
 import br.edu.ifes.sr.poo2.api.model.Jogo;
+import br.edu.ifes.sr.poo2.api.model.Nivel;
 
 import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.api.client.ClientResponse;
 
 public class JogoAPIImpl extends APIGeneric implements JogoAPI {
 	
-	public Jogo jogar(String username, String URLServico) {
+	public Jogo jogar(String username, String URLServico, Nivel nivel) {
 
-		ClientResponse response = clientAPIUtil.get(URLServico+"/partida");
+		ClientResponse response = clientAPIUtil.get(URLServico+"/partida/"+username+"/"+nivel);
 		
 		String jsonResposta = response.getEntity(String.class);
 		
