@@ -44,8 +44,14 @@ public class JogadorTest {
 	@Test
 	public void getRanking()
 	{
-		List<Ranking> ranking = jogadorAPI.getRanking();
-		Assert.assertNotNull(ranking);
+		List<Ranking> rankings = jogadorAPI.getRanking();
+		for (Ranking ranking: rankings)
+		{
+			System.out.println("Nome:"+ranking.getUsername());
+			System.out.println("Ponto:"+ranking.getPonto());
+			System.out.println("==========================");
+		}
+		Assert.assertNotNull(rankings);
 		
 	}
 
