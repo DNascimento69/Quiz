@@ -62,11 +62,12 @@ public class JogadorController extends AbstractController {
 			String resposta = "";
 		try {
 				
-				Jogador jogadorX = service.findByEmail(jogador.getEmail());
-				
-				if ((jogadorX!=null) && (jogadorX.getSenha().equals(jogadorX.getSenha())))
+				Jogador jogadorBD = service.findByEmail(jogador.getEmail());
+
+				//Verificando se o jogador existe
+				if ((jogadorBD!=null) && (jogadorBD.getSenha().equals(jogador.getSenha())))
 				{
-					resposta = jogadorX.getUsername();
+					resposta = jogadorBD.getUsername();
 				}
 				
 				return new ResponseEntity<String>(resposta,

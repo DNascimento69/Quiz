@@ -7,6 +7,6 @@ public interface JogoAPI {
 
 	public Jogo jogar (String username, String URLServico, Nivel nivel);
 	
-	public boolean salvarJogo (String URLServico, Jogo jogo);
+	public int salvarJogo (String URLServico, Jogo jogo);
 	
 }

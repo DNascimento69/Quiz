@@ -24,7 +24,7 @@ public class JogoAPIImpl extends APIGeneric implements JogoAPI  {
 		return novoJogo;
 	}
 
-	public boolean salvarJogo(String URLServico, Jogo jogo) {
+	public int salvarJogo(String URLServico, Jogo jogo) {
 		
 		String JSON = gson.toJson(jogo);
 		
@@ -32,9 +32,12 @@ public class JogoAPIImpl extends APIGeneric implements JogoAPI  {
 		
 		String retorno = response.getEntity(String.class);
 		
-		if (retorno.equals("true")) return true;
+		Integer pontuacao = new Integer (retorno);
 		
-		return false;
+		return pontuacao;
+		
 	}
+	
+	
 
 }
